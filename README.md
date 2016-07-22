@@ -1,3 +1,3 @@
 # philosoraptor
 
-Author: Ekta 
+Authors: Ekta & Juliette
