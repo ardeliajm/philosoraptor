@@ -52,7 +52,7 @@
             		layer1[i].drawBuilding();
             		layer1[i].moveBuilding();
             	}
-				for(var i = 0; i < layer1.length; i++)
+							for(var i = 0; i < layer1.length; i++)
             	{
             		layer2[i].drawBuilding();
             		layer2[i].moveBuilding();
@@ -85,9 +85,9 @@
 					width = w;
 				}
                 void moveBuilding(){
-             	  xposition = xposition + 2;
-             	  if (xposition >1000) {
-             	     xposition = -50
+             	  xposition = xposition - 2;
+             	  if (xposition >2000) {
+             	  	xposition = -50
              	 }
 
              }
@@ -95,8 +95,7 @@
 			       noStroke();
 			       fill(color);
 			       rect(xposition, yposition, width, height);
-			       fill(249,247,232);
-			  	   ellipse(50,50,70,70)
+			      
 			  	}
 
      }
