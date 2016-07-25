@@ -21,6 +21,7 @@ html {
 	background-position: center center;
 }
 button {
+  text-decoration: none;
   float: none;
   display: block;
   width: 100px;
