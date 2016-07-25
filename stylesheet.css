@@ -21,11 +21,11 @@ html {
 	background-position: center center;
 }
 button {
+  text-decoration: none;
   float: none;
   display: block;
   width: 100px;
   margin: 10px auto;
-  text-align: center;
   style="width: 300px;
   padding: 20px;
   box-shaddow: 6px 6px 5px; #999999;
