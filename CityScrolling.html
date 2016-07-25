@@ -4,6 +4,38 @@
 		<script src="processing-1.4.1.js"></script>
 		<script type="text/processing" data-processing-target="mycanvas">
 
+//none of this works and most of it is psuedo code so comment out Character stuff if you want the scroller to work
+class Character{
+	var xposition;
+	var yposition;
+
+	Character(x, y){
+		xposition = x;
+		yposition = y;
+	}
+	void drawCharacter(){
+		fill(255,255,255)
+		ellipse(1200, 645, 50, 50);
+	}
+}
+
+	// void moveCharacter(){
+	// 		if (keyPressed==none){
+	// 				//switch btwn char images
+	// 				xposition = 1100
+	// 		}
+	// 		if (keyCode == 38){
+	// 			//hold image 1
+	// 			yposition = yposition+10
+	// 		}
+	// 		else{
+	// 			//switch btwn the two images
+	// 		}
+	//
+	// 	}
+
+
+
 class Building {
   var xposition;
   var yposition;
@@ -45,7 +77,7 @@ void setup(){
   var position = 0;
   var width;
   	for (var i = 0; i < count; i++) {
-	  	width = random(90,120);
+	  	width = random(120,150);
 	  	building1 = new Building(position,random(150, 250),color(192,192,192),3,700,width);
 	  	layer1.push(building1);
 	  	position = position + width;
@@ -53,7 +85,7 @@ void setup(){
 	 position =0;
 	 width;
 	  for (var i = 0; i < count; i++) {
-	  	width = random(60,90);
+	  	width = random(90,120);
 	  	building2 = new Building(position,random(260, 350),color(128,128,128),7,700,width);
 	  	layer2.push(building2);
 	  	position = position + width;
@@ -61,9 +93,9 @@ void setup(){
 	 position = 0;
 	 width;
  		for (var i = 0; i < count; i++){
-	  	width = random(30,60);
+	  	width = random(60,90);
       //Buildings in Front Row
-	  	building3 = new Building(position,random(100,550),color(64,64,64),9,700,width);
+	  	building3 = new Building(position,random(50,500),color(64,64,64),9,700,width);
 	  	layer3.push(building3);
 	  	position = position + width;
 		}
@@ -93,6 +125,7 @@ void draw(){
 	rect(1300, 650, -1300, 50);
 	fill(255, 255, 0);
 	rect(1300, 675, -1300, 2);
+
 
 
 }
