@@ -3,6 +3,27 @@
 		<script src="processing-1.4.1.js"></script>
 		<script type="text/processing" data-processing-target="mycanvas">
 
+// class Character{
+// 	var xposition;
+// 	var yposition;
+// 	var height;
+//   var width;
+//
+// 	Character(x, y){
+// 		xposition = x;
+// 		yposition = y;
+// 	}
+// 	void drawCharacter(){
+// 		fill(255,255,255)
+// 		ellipse(1200, 645, 50, 50);
+// 	}
+// }
+// void moveCharacter(){
+// 	//while no key pressed, change btwn the two images of the Character
+// 		//if key pressed up hold img 1 and add + 10 to the ypos of the Character
+//
+// }
+
 class Building {
   var xposition;
   var yposition;
@@ -29,7 +50,6 @@ class Building {
     rect(xposition, yposition, width, height);
 	}
 }
-
 		var building1;
     var building2;
     var building3;
@@ -42,7 +62,7 @@ void setup(){
   background(153,204,255);
 
 	var count = 1000;
-  var position = 1;
+  var position = 0;
   var width;
   	for (var i = 0; i < count; i++) {
 	  	width = random(90,120);
@@ -50,7 +70,7 @@ void setup(){
 	  	layer1.push(building1);
 	  	position = position + width;
 		}
-	 position = 1;
+	 position =0;
 	 width;
 	  for (var i = 0; i < count; i++) {
 	  	width = random(60,90);
@@ -58,7 +78,7 @@ void setup(){
 	  	layer2.push(building2);
 	  	position = position + width;
 		}
-	 position = 1;
+	 position = 0;
 	 width;
  		for (var i = 0; i < count; i++){
 	  	width = random(30,60);
@@ -66,12 +86,14 @@ void setup(){
 	  	layer3.push(building3);
 	  	position = position + width;
 		}
+
 //close setup
 }
-
-//functions for building class
+//functions for building class and drawing road
 void draw(){
 	background(153,204,255);
+	// circle = new Character(1200,645)
+
 	for(var i = 0; i < layer1.length; i++){
 		layer1[i].drawBuilding();
 		layer1[i].moveBuilding();
@@ -89,7 +111,9 @@ void draw(){
 	fill(0,0,0);
 	rect(1300, 650, -1300, 50);
 	fill(255, 255, 0);
-	rect(1300, 650, -1300, 5);
+	rect(1300, 675, -1300, 2);
+
+
 }
 		</script>
 	</head>
