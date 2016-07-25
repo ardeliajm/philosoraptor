@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<title>City Hustle!</title>
 		<script src="processing-1.4.1.js"></script>
 		<script type="text/processing" data-processing-target="mycanvas">
 
@@ -61,7 +62,8 @@ void setup(){
 	 width;
  		for (var i = 0; i < count; i++){
 	  	width = random(30,60);
-	  	building3 = new Building(position,random(350,550),color(64,64,64),9,700,width);
+      //Buildings in Front Row
+	  	building3 = new Building(position,random(100,550),color(64,64,64),9,700,width);
 	  	layer3.push(building3);
 	  	position = position + width;
 		}
