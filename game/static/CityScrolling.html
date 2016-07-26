@@ -3,7 +3,10 @@
 		<title>City Hustle!</title>
 		<script src="processing-1.4.1.js"></script>
 		<script type="text/processing" data-processing-target="mycanvas">
-/* @pjs preload="/static/stickfigure.png"; */
+/* @pjs preload="/static/standingfigure.png"; */
+/* @pjs preload="/static/jumpingfigure.png"; */
+/* @pjs preload="/static/runningfigure.png"; */
+
 class Character{
 	var xPositionChar;
 	var yPositionChar;
@@ -12,7 +15,7 @@ class Character{
 	Character(x, y){
 		xPositionChar = x;
 		yPositionChar = y;
-		picture = loadImage("stickfigure.png");
+		picture = loadImage("standingfigure.png");
 	}
 	void drawCharacter(){
 		image(picture, width/2, 0, picture.width/2, picture.height/2);
