@@ -10,23 +10,30 @@
 class Character{
 	var xPositionChar;
 	var yPositionChar;
-	var picture;
+	var pic1;
+	var pic2;
+	var pic3;
 
 	Character(x, y){
 		xPositionChar = x;
 		yPositionChar = y;
-		picture = loadImage("standingfigure.png");
+		pic1 = loadImage("standingfigure.png");
+		pic2 = loadImage("jumpingfigure.png")
+		pic3 = loadImage("runningfigure.png")
 	}
 	void drawCharacter(){
-		image(picture, width/2, 0, picture.width/2, picture.height/2);
+		image(pic1, 20, 590, pic1.width/2, pic1.height/2);
 	}
  }
+var jumpvalue = 3;
 	void keyPressed() {
 		if (value == 38) {
-			yPositionChar = yPositionChar+10;
+			for (var i = 0; i <=10; i++) {
+				yPositionChar = yPositionChar+jumpvalue;
+				
 		}
+			}
 }
-
 var count = 1000;
 var keepingtrack = 0;
 void generateBuilding(){
@@ -54,10 +61,9 @@ void generateBuilding(){
 		building3 = new Building(position,random(50,500),color(91,47,138),9,700,width);
 		layer3.push(building3);
 		position = position + width;
-		keepingtrack +=1;
+		keepingtrack++;
 	}
 }
-
 class Building {
   var xposition;
   var yposition;
@@ -74,11 +80,9 @@ class Building {
   		height = h;
   		width = w;
   	}
-
   void moveBuilding(){
     xposition = xposition - speed;
   }
-
   void drawBuilding(){
     noStroke();
     fill(color);
@@ -96,14 +100,15 @@ void setup(){
   size(1250,700);
   background(153,204,255);
 	generateBuilding()
-	bob = new Character()
+	bob = new Character(0,0)
 //close setup
 }
 //functions for building class and drawing road
 void draw(){
 	background(153,204,255);
 	if (keepingtrack == 999){
-		generateBuilding()
+		generateBuilding();
+
 }
 
 	for(var i = 0; i < layer1.length; i++){
@@ -118,12 +123,10 @@ void draw(){
 		layer3[i].drawBuilding();
 		layer3[i].moveBuilding();
 	}
-	fill(0,0,0);
+	fill(168,168,168);
 	rect(1300, 650, -1300, 50);
-	fill(0,0,0);
-	rect(1300, 650, -1300, 50);
-	fill(255, 255, 0);
-	rect(1300, 675, -1300, 2);
+	// fill(255, 255, 0);
+	// rect(1300, 675, -1300, 2);
 	bob.drawCharacter();
 }
 		</script>
