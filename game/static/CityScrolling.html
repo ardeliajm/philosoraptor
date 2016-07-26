@@ -23,17 +23,22 @@ class Character{
 	}
 	void drawCharacter(){
 		image(pic1, 20, 590, pic1.width/2, pic1.height/2);
+
+		image(pic2, 20, 590, pic2.width/2, pic2.height/2);
 	}
  }
-var jumpvalue = 3;
-	void keyPressed() {
-		if (value == 38) {
-			for (var i = 0; i <=10; i++) {
-				yPositionChar = yPositionChar+jumpvalue;
-				
-		}
+//some notes
+var velocity = 12;
+var acceleration = .5;
+var ground =
+postion += velocity
+	void keyPressed(value==32) {
+				yPositionChar = yPositionChar+;
 			}
+		}
 }
+
+
 var count = 1000;
 var keepingtrack = 0;
 void generateBuilding(){
@@ -98,6 +103,7 @@ class Building {
 
 void setup(){
   size(1250,700);
+	frameRate(4);
   background(153,204,255);
 	generateBuilding()
 	bob = new Character(0,0)
