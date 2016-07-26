@@ -1,0 +1,41 @@
+h1 {
+  margin-top: 60px;
+  text-align: center;
+  color: white;
+  font-family: arial;
+  text-shadow: 2px 2px darkgrey;
+  font-size: 95px
+}
+h2, h3 {
+    text-align: center;
+    color: white;
+    font-family: arial;
+    text-shadow: 1px 1px darkgrey;
+}
+html {
+  background-image: url("http://www.publicdomainpictures.net/pictures/110000/velka/frozen-in-time-1418821993ThR.jpg");
+  min-height: 100%;
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+button {
+  text-decoration: none;
+  float: none;
+  display: block;
+  width: 100px;
+  margin: 10px auto;
+  style="width: 300px;
+  padding: 20px;
+  box-shaddow: 6px 6px 5px; #999999;
+  -webkit-box-shadow: 6px 6px 5px #999999;
+  -moz-box-shadow: 6px 6px 5px #999999;
+  font-weight: bold;
+  background: white;
+  color: #000000;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid #D9D9D9;
+  font-size: 150%;"
+}

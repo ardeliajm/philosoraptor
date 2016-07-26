@@ -1,0 +1,131 @@
+<html>
+	<head>
+		<title>City Hustle!</title>
+		<script src="processing-1.4.1.js"></script>
+		<script type="text/processing" data-processing-target="mycanvas">
+/* @pjs preload="/static/stickfigure.png"; */
+class Character{
+	var xPositionChar;
+	var yPositionChar;
+	var picture;
+
+	Character(x, y){
+		xPositionChar = x;
+		yPositionChar = y;
+		picture = loadImage("stickfigure.png");
+	}
+	void drawCharacter(){
+		image(picture, width/2, 0, picture.width/2, picture.height/2);
+	}
+ }
+	void keyPressed() {
+		if (value == 38) {
+			yPositionChar = yPositionChar+10;
+		}
+}
+
+var count = 1000;
+var keepingtrack = 0;
+void generateBuilding(){
+	var position = 0;
+	var width;
+	for (var i = 0; i < count; i++) {
+		width = random(120,150);
+		building1 = new Building(position,random(150, 250),color(214,187,242),3,700,width);
+		layer1.push(building1);
+		position = position + width;
+	}
+ position=0;
+ width;
+	for (var i = 0; i < count; i++) {
+		width = random(90,120);
+		building2 = new Building(position,random(260, 350),color(143,107,181),7,700,width);
+		layer2.push(building2);
+		position = position + width;
+	}
+ position = 0;
+ width;
+	for (var i = 0; i < count; i++){
+		width = random(60,90);
+		//Buildings in Front Row
+		building3 = new Building(position,random(50,500),color(91,47,138),9,700,width);
+		layer3.push(building3);
+		position = position + width;
+		keepingtrack +=1;
+	}
+}
+
+class Building {
+  var xposition;
+  var yposition;
+  var color;
+  var speed;
+  var height;
+  var width;
+
+  Building(x, y, c, sp, h, w){
+  		xposition = x;
+  		yposition = y;
+  		color = c;
+  		speed = sp;
+  		height = h;
+  		width = w;
+  	}
+
+  void moveBuilding(){
+    xposition = xposition - speed;
+  }
+
+  void drawBuilding(){
+    noStroke();
+    fill(color);
+    rect(xposition, yposition, width, height);
+	}
+}
+		var building1;
+    var building2;
+    var building3;
+    var layer1 = [];
+    var layer2 = [];
+    var layer3 = [];
+
+void setup(){
+  size(1250,700);
+  background(153,204,255);
+	generateBuilding()
+	bob = new Character(0,0)
+//close setup
+}
+//functions for building class and drawing road
+void draw(){
+	background(153,204,255);
+	if (keepingtrack == 999){
+		generateBuilding()
+}
+
+	for(var i = 0; i < layer1.length; i++){
+		layer1[i].drawBuilding();
+		layer1[i].moveBuilding();
+	}
+	for(var i = 0; i < layer1.length; i++){
+		layer2[i].drawBuilding();
+		layer2[i].moveBuilding();
+	}
+	for(var i = 0; i < layer1.length; i++){
+		layer3[i].drawBuilding();
+		layer3[i].moveBuilding();
+	}
+	fill(0,0,0);
+	rect(1300, 650, -1300, 50);
+	fill(0,0,0);
+	rect(1300, 650, -1300, 50);
+	fill(255, 255, 0);
+	rect(1300, 675, -1300, 2);
+	bob.drawCharacter();
+}
+		</script>
+	</head>
+	<body>
+		<canvas id="mycanvas"></canvas>
+	</body>
+</html>
