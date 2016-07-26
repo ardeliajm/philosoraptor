@@ -14,6 +14,7 @@ class Character{
 	var pic2;
 	var pic3;
 	var currentPic;
+	var picChange;
 
 	Character(x, y){
 		xPositionChar = x;
@@ -22,11 +23,19 @@ class Character{
 		pic2 = loadImage("runningfigure.png")
 		pic3 = loadImage("jumpingfigure.png")
 		currentPic = pic1;
+		picChange = 0;
 	}
 	void drawCharacter(){
 		image(currentPic, 20, 590, currentPic.width/2, currentPic.height/2);
-		if (currentPic == pic1){
-			currentPic = pic2;
+		picChange += 1;
+		if (picChange == 10){
+			if (currentPic == pic1){
+				currentPic = pic2;
+			}
+			else if (currentPic == pic2) {
+				currentPic = pic1;
+			}
+			picChange=0;
 		}
 	}
 
@@ -40,37 +49,39 @@ class Character{
 }
 
 
-
-var count = 10;
+var position = 0;
+var count = 100;
 var keepingtrack = 0;
 void generateBuilding(){
-	var position = 0;
+	var currentPos = position;
 	var width;
 	for (var i = 0; i < count; i++) {
 		width = random(120,150);
-		building1 = new Building(position,random(150, 250),color(214,187,242),3,700,width);
+		building1 = new Building(currentPos,random(150, 250),color(214,187,242),3,700,width);
 		layer1.push(building1);
-		position = position + width;
+		currentPos = currentPos + width;
 	}
- position=0;
+ currentPos=position;
  width;
 	for (var i = 0; i < count; i++) {
 		width = random(90,120);
-		building2 = new Building(position,random(260, 350),color(143,107,181),7,700,width);
+		building2 = new Building(currentPos,random(260, 350),color(143,107,181),7,700,width);
 		layer2.push(building2);
-		position = position + width;
+		currentPos = currentPos + width;
 	}
- position = 0;
+ currentPos=position;
  width;
 	for (var i = 0; i < count; i++){
 		width = random(60,90);
 		//Buildings in Front Row
-		building3 = new Building(position,random(50,500),color(91,47,138),9,700,width);
+		building3 = new Building(currentPos,random(50,500),color(91,47,138),9,700,width);
 		layer3.push(building3);
-		position = position + width;
-		keepingtrack++;
+		currentPos = currentPos + width;
 	}
+	position = currentPos;
 }
+
+
 class Building {
   var xposition;
   var yposition;
@@ -113,8 +124,10 @@ void setup(){
 //functions for building class and drawing road
 void draw(){
 	background(153,204,255);
-	if (keepingtrack == 999){
+	keepingtrack++;
+	if (keepingtrack == 99){
 		generateBuilding();
+		keepingtrack = 0;
 	}
 	for(var i = 0; i < layer1.length; i++){
 		layer1[i].drawBuilding();
@@ -128,12 +141,14 @@ void draw(){
 		layer3[i].drawBuilding();
 		layer3[i].moveBuilding();
 	}
+
 	fill(168,168,168);
 	rect(1300, 650, -1300, 50);
 	// fill(255, 255, 0);
 	// rect(1300, 675, -1300, 2);
 	bob.drawCharacter();
 }
+
 		</script>
 	</head>
 	<body>
