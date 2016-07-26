@@ -1,5 +1,3 @@
 # philosoraptor
 
-Authors: Ekta
-Author: Gio
-Author: Juliette
+Authors: Ekta, Gio, and Juliette
