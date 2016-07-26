@@ -13,20 +13,14 @@ class Character{
 		yPositionChar = y;
 	}
 	void drawCharacter(){
-		fill(255,255,255)
-		ellipse(50, 645, 50, 50);
+	//nada
 	}
 }
 	void keyPressed() {
 		if (value == 38) {
-			yPositionChar = yPositionChar +10;
-
-	}
-	else {
-		value = 0;
-	}
+			yPositionChar = yPositionChar+10;
 }
-
+}
 
 var count = 1000;
 
@@ -56,7 +50,6 @@ void generateBuilding(){
 		layer3.push(building3);
 		position = position + width;
 	}
-
 }
 
 class Building {
@@ -124,10 +117,9 @@ void draw(){
 	rect(1300, 650, -1300, 50);
 	fill(255, 255, 0);
 	rect(1300, 675, -1300, 2);
+
 	circle = new Character(1200,645)
 	circle.drawCharacter();
-
-
 
 }
 		</script>
