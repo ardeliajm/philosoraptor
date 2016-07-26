@@ -5,33 +5,29 @@
 		<script type="text/processing" data-processing-target="mycanvas">
 
 class Character{
-	var xposition;
-	var yposition;
+	var xPositionChar;
+	var yPositionChar;
 
 	Character(x, y){
-		xposition = x;
-		yposition = y;
+		xPositionChar = x;
+		yPositionChar = y;
 	}
 	void drawCharacter(){
 		fill(255,255,255)
 		ellipse(50, 645, 50, 50);
 	}
 }
+	void keyPressed() {
+		if (value == 38) {
+			yPositionChar = yPositionChar +10;
 
-	// void moveCharacter(){
-	// 		if (keyPressed==none){
-	// 				//switch btwn char images
-	// 				xposition = 1100
-	// 		}
-	// 		if (keyCode == 38){
-	// 			//hold image 1
-	// 			yposition = yposition+10
-	// 		}
-	// 		else{
-	// 			//switch btwn the two images
-	// 		}
-	//
-	// 	}
+	}
+	else {
+		value = 0;
+	}
+}
+
+
 var count = 1000;
 
 void generateBuilding(){
@@ -130,6 +126,7 @@ void draw(){
 	rect(1300, 675, -1300, 2);
 	circle = new Character(1200,645)
 	circle.drawCharacter();
+
 
 
 }
