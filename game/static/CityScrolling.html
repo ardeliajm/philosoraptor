@@ -13,20 +13,23 @@ class Character{
 	var pic1;
 	var pic2;
 	var pic3;
+	var currentPic;
 
 	Character(x, y){
 		xPositionChar = x;
 		yPositionChar = y;
 		pic1 = loadImage("standingfigure.png");
-		pic2 = loadImage("jumpingfigure.png")
-		pic3 = loadImage("runningfigure.png")
+		pic2 = loadImage("runningfigure.png")
+		pic3 = loadImage("jumpingfigure.png")
+		currentPic = pic1;
 	}
 	void drawCharacter(){
-		image(pic1, 20, 590, pic1.width/2, pic1.height/2);
-
-		image(pic2, 20, 590, pic2.width/2, pic2.height/2);
+		image(currentPic, 20, 590, currentPic.width/2, currentPic.height/2);
+		if (currentPic == pic1){
+			currentPic = pic2;
+		}
 	}
- }
+
 //some notes
 // var velocity = 12;
 // var acceleration = .5;
@@ -38,7 +41,7 @@ class Character{
 
 
 
-var count = 1000;
+var count = 10;
 var keepingtrack = 0;
 void generateBuilding(){
 	var position = 0;
@@ -102,7 +105,6 @@ class Building {
 
 void setup(){
   size(1250,700);
-	frameRate(4);
   background(153,204,255);
 	generateBuilding()
 	bob = new Character(0,0)
@@ -113,9 +115,7 @@ void draw(){
 	background(153,204,255);
 	if (keepingtrack == 999){
 		generateBuilding();
-
-}
-
+	}
 	for(var i = 0; i < layer1.length; i++){
 		layer1[i].drawBuilding();
 		layer1[i].moveBuilding();
