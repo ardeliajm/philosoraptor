@@ -60,7 +60,7 @@ class Character{
  }
 
 var position = 0;
-var count = 1000;
+var count = 10;
 var keepingtrack = 0;
 void generateBuilding(){
 	var currentPos = position;
@@ -70,6 +70,7 @@ void generateBuilding(){
 		building1 = new Building(currentPos,random(150, 250),color(214,187,242),3,700,width);
 		layer1.push(building1);
 		currentPos = currentPos + width;
+
 	}
  currentPos=position;
  width;
@@ -89,6 +90,7 @@ void generateBuilding(){
 		currentPos = currentPos + width;
 	}
 	position = currentPos+width;
+			console.log(layer1.length())
 }
 
 
@@ -112,7 +114,7 @@ class Building {
 		xposition = xposition - speed;
   }
   void drawBuilding(){
-		if (xposition+width>=0){
+		if (xposition+width>=0 && xposition-width<=1250){
 			noStroke();
 			fill(color);
 			rect(xposition, yposition, width, height);
@@ -142,6 +144,9 @@ void drawClouds(){
 void updateScore(){
 	score++;
 }
+// void win(){
+// 	if (score == 10000){}
+// }
 
 void setup(){
   size(1250,700);
