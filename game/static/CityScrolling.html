@@ -8,6 +8,10 @@
 /* @pjs preload="/static/runningfigure.png"; */
 
 
+	//var velocity = 40;
+	// var acceleration = .5;
+	// var ground = 700;
+
 class Character{
 	var xPositionChar;
 	var yPositionChar;
@@ -24,7 +28,6 @@ class Character{
 		pic2 = loadImage("runningfigure.png")
 		pic3 = loadImage("jumpingfigure.png")
 
-
 		currentPic = pic1;
 		picChange = 0;
 	}
@@ -32,7 +35,7 @@ class Character{
 	void drawCharacter(){
 		image(currentPic, 20, 590, currentPic.width/2, currentPic.height/2);
 		picChange += 1;
-		if (picChange == 10){
+		if (picChange == 8){
 			if (currentPic == pic1){
 				currentPic = pic2;
 			}
@@ -41,16 +44,13 @@ class Character{
 			}
 			picChange=0;
 		}
+		if (keyPressed == true) {
+			yPositionChar = yPositionChar+100;
+			currentPic = pic3;
+  }
 	}
  }
-//some notes
-// var velocity = 12;
-// var acceleration = .5;
-// var ground =
-// postion += velocity
-// 	void keyPressed(value==32) {
-// 				yPositionChar = yPositionChar+velocity;
-// }
+
 var position = 0;
 var count = 1000;
 var keepingtrack = 0;
@@ -112,12 +112,26 @@ class Building {
 		}
 	}
 }
+var leftX = 121;
+var rightX = 210;
+void drawClouds(){
+	leftX-=1;
+	rightX+=1;
+	fill(255, 255, 255);
+	ellipse(rightX, 100, 126, 97);
+	ellipse(rightX+62, 100, 70, 60);
+	ellipse(rightX-62, 100, 70, 60);
+}
+
+
 		var building1;
     var building2;
     var building3;
     var layer1 = [];
     var layer2 = [];
     var layer3 = [];
+
+var score = 0;
 
 void setup(){
   size(1250,700);
@@ -126,24 +140,16 @@ void setup(){
 	bob = new Character(0,0)
 //close setup
 }
-var leftX = 121;
-var rightX = 210;
+
 //function for drawing buildings, road, and everything else//loops 60 frames per sec
 void draw(){
 	background(153,204,255);
 	keepingtrack++;
 	if (keepingtrack == 999){
 		generateBuilding();
+		drawClouds();
 		keepingtrack = 0;
 	}
-	// // clouds
-	// leftX-=1;
-	// rightX+=1;
-	// fill(255, 255, 255);
-	// ellipse(rightX, 100, 126, 97);
-	// ellipse(rightX+62, 100, 70, 60);
-	// ellipse(rightX-62, 100, 70, 60);
-
 	for(var i = 0; i < layer1.length; i++){
 		layer1[i].drawBuilding();
 		layer1[i].moveBuilding();
@@ -159,6 +165,7 @@ void draw(){
 	fill(168,168,168);
 	rect(1300, 650, -1300, 50);
 	bob.drawCharacter();
+	text(score = score++);
 }
 
 		</script>
