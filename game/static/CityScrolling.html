@@ -7,7 +7,6 @@
 /* @pjs preload="/static/jumpingfigure.png"; */
 /* @pjs preload="/static/runningfigure.png"; */
 
-
 class Character{
 	var xPositionChar;
 	var yPositionChar;
@@ -16,6 +15,9 @@ class Character{
 	var pic3;
 	var currentPic;
 	var picChange;
+	var yvelocity = 0;
+	var gravity = 2;
+	var ground = 550;
 
 	Character(x, y){
 		xPositionChar = x;
@@ -31,6 +33,16 @@ class Character{
 	void drawCharacter(){
 		image(currentPic, xPositionChar, yPositionChar, currentPic.width/2, currentPic.height/2);
 		picChange += 1;
+		yPositionChar=yPositionChar+yvelocity;
+		yvelocity=yvelocity+gravity;
+		if (yPositionChar > ground){
+			yPositionChar = ground;
+		}
+		if (yPositionChar == ground){
+			if (currentPic == pic3){
+				currentPic = pic1;
+			}
+		}
 		if (picChange == 8){
 			if (currentPic == pic1){
 				currentPic = pic2;
@@ -41,7 +53,7 @@ class Character{
 			picChange=0;
 		}
 		if (keyPressed == true) {
-			yPositionChar = yPositionChar-100;
+			yvelocity=-10;
 			currentPic = pic3;
   }
 	}
@@ -135,9 +147,8 @@ void setup(){
   size(1250,700);
   background(153,204,255);
 	generateBuilding()
-	bob = new Character(20,552)
 	score = 0;
-
+	bob = new Character(40,550)
 //close setup
 }
 
