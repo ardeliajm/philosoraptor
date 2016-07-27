@@ -19,6 +19,7 @@ class Character{
 	var yvelocity = 0;
 	var gravity = 2;
 	var ground = 550;
+	var ceiling = 10;
 
 	Character(x, y){
 		xPositionChar = x;
@@ -38,6 +39,9 @@ class Character{
 		yvelocity=yvelocity+gravity;
 		if (yPositionChar > ground){
 			yPositionChar = ground;
+		}
+		if (yPositionChar < ceiling){
+			yPositionChar = ceiling-1;
 		}
 		if (yPositionChar == ground){
 			if (currentPic == pic3){
@@ -143,10 +147,12 @@ void drawClouds(){
 void updateScore(){
 	score++;
 }
-// void win(){
-// 	if (score == 10000){}
-// }
+/void checkForWin(){
+	if (score>= 8000){
+ 		window.location = "win.html";
+	}
 
+}
 void setup(){
   size(1250,700);
   background(153,204,255);
@@ -183,6 +189,7 @@ void draw(){
 	fill(255,255,255);
 	textSize(20);
 	updateScore();
+	checkForWin();
 	text("Score: "+score,10,20);
 }
 
