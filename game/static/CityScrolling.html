@@ -8,10 +8,6 @@
 /* @pjs preload="/static/runningfigure.png"; */
 
 
-	//var velocity = 40;
-	// var acceleration = .5;
-	// var ground = 700;
-
 class Character{
 	var xPositionChar;
 	var yPositionChar;
@@ -33,7 +29,7 @@ class Character{
 	}
 
 	void drawCharacter(){
-		image(currentPic, 20, 590, currentPic.width/2, currentPic.height/2);
+		image(currentPic, xPositionChar, yPositionChar, currentPic.width/2, currentPic.height/2);
 		picChange += 1;
 		if (picChange == 8){
 			if (currentPic == pic1){
@@ -45,7 +41,7 @@ class Character{
 			picChange=0;
 		}
 		if (keyPressed == true) {
-			yPositionChar = yPositionChar+100;
+			yPositionChar = yPositionChar-100;
 			currentPic = pic3;
   }
 	}
@@ -101,7 +97,6 @@ class Building {
   		width = w;
   	}
   void moveBuilding(){
-
 		xposition = xposition - speed;
   }
   void drawBuilding(){
@@ -124,19 +119,25 @@ void drawClouds(){
 	ellipse(rightX-62, 100, 70, 60);
 }
 
-
 		var building1;
     var building2;
     var building3;
     var layer1 = [];
     var layer2 = [];
     var layer3 = [];
+		var score;
+
+void updateScore(){
+	score++;
+}
 
 void setup(){
   size(1250,700);
   background(153,204,255);
 	generateBuilding()
-	bob = new Character(0,0)
+	bob = new Character(20,552)
+	score = 0;
+
 //close setup
 }
 
@@ -145,7 +146,7 @@ void draw(){
 	background(153,204,255);
 	drawClouds();
 	keepingtrack++;
-	if (keepingtrack == 999){
+	if (keepingtrack == count-1){
 		generateBuilding();
 		keepingtrack = 0;
 	}
@@ -165,9 +166,9 @@ void draw(){
 	rect(1300, 650, -1300, 50);
 	bob.drawCharacter();
 	fill(255,255,255);
-	var score = 0;
-	score = score++;
-	text("score = "+score,10,20);
+	textSize(20);
+	updateScore();
+	text("Score: "+score,10,20);
 }
 
 		</script>
