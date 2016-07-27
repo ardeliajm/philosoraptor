@@ -7,6 +7,7 @@
 /* @pjs preload="/static/jumpingfigure.png"; */
 /* @pjs preload="/static/runningfigure.png"; */
 
+
 class Character{
 	var xPositionChar;
 	var yPositionChar;
@@ -22,9 +23,12 @@ class Character{
 		pic1 = loadImage("standingfigure.png");
 		pic2 = loadImage("runningfigure.png")
 		pic3 = loadImage("jumpingfigure.png")
+
+
 		currentPic = pic1;
 		picChange = 0;
 	}
+
 	void drawCharacter(){
 		image(currentPic, 20, 552, currentPic.width/2, currentPic.height/2);
 		picChange += 1;
@@ -44,11 +48,10 @@ class Character{
 // var acceleration = .5;
 // var ground =
 // postion += velocity
+
 //	void keyPressed(value==32) {
 //				yPositionChar = yPositionChar+velocity;
 }
-
-
 var position = 0;
 var count = 1000;
 var keepingtrack = 0;
@@ -78,7 +81,7 @@ void generateBuilding(){
 		layer3.push(building3);
 		currentPos = currentPos + width;
 	}
-	position = currentPos;
+	position = currentPos+width;
 }
 
 
@@ -99,12 +102,15 @@ class Building {
   		width = w;
   	}
   void moveBuilding(){
-    xposition = xposition - speed;
+
+		xposition = xposition - speed;
   }
   void drawBuilding(){
-    noStroke();
-    fill(color);
-    rect(xposition, yposition, width, height);
+		if (xposition+width>=0){
+			noStroke();
+			fill(color);
+			rect(xposition, yposition, width, height);
+		}
 	}
 }
 		var building1;
@@ -121,14 +127,24 @@ void setup(){
 	bob = new Character(0,0)
 //close setup
 }
-//functions for building class and drawing road
+var leftX = 121;
+var rightX = 210;
+//function for drawing buildings, road, and everything else//loops 60 frames per sec
 void draw(){
 	background(153,204,255);
 	keepingtrack++;
-	if (keepingtrack == 99){
+	if (keepingtrack == 999){
 		generateBuilding();
 		keepingtrack = 0;
 	}
+	// // clouds
+	// leftX-=1;
+	// rightX+=1;
+	// fill(255, 255, 255);
+	// ellipse(rightX, 100, 126, 97);
+	// ellipse(rightX+62, 100, 70, 60);
+	// ellipse(rightX-62, 100, 70, 60);
+
 	for(var i = 0; i < layer1.length; i++){
 		layer1[i].drawBuilding();
 		layer1[i].moveBuilding();
@@ -141,11 +157,8 @@ void draw(){
 		layer3[i].drawBuilding();
 		layer3[i].moveBuilding();
 	}
-
 	fill(168,168,168);
 	rect(1300, 650, -1300, 50);
-	// fill(255, 255, 0);
-	// rect(1300, 675, -1300, 2);
 	bob.drawCharacter();
 }
 
