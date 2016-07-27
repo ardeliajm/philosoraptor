@@ -7,6 +7,9 @@
 /* @pjs preload="/static/jumpingfigure.png"; */
 /* @pjs preload="/static/runningfigure.png"; */
 
+
+
+
 class Character{
 	var xPositionChar;
 	var yPositionChar;
@@ -22,9 +25,9 @@ class Character{
 	Character(x, y){
 		xPositionChar = x;
 		yPositionChar = y;
-		pic1 = loadImage("standingfigure.png");
-		pic2 = loadImage("runningfigure.png")
-		pic3 = loadImage("jumpingfigure.png")
+		pic1 = loadImage("runningfigure.png");
+		pic2 = loadImage("runningfigure2.png")
+		pic3 = loadImage("flyingfigure.png")
 
 		currentPic = pic1;
 		picChange = 0;
@@ -51,6 +54,7 @@ class Character{
 				currentPic = pic1;
 			}
 			picChange=0;
+
 		}
 		if (keyPressed == true) {
 			yvelocity=-10;
@@ -111,6 +115,7 @@ class Building {
   		width = w;
   	}
   void moveBuilding(){
+
 		xposition = xposition - speed;
   }
   void drawBuilding(){
@@ -133,12 +138,14 @@ void drawClouds(){
 	ellipse(rightX-62, 100, 70, 60);
 }
 
+
 		var building1;
     var building2;
     var building3;
     var layer1 = [];
     var layer2 = [];
     var layer3 = [];
+
 		var score;
 
 void updateScore(){
@@ -148,11 +155,12 @@ void updateScore(){
 // 	if (score == 10000){}
 // }
 
+
 void setup(){
   size(1250,700);
   background(153,204,255);
 	generateBuilding()
-	score = 0;
+	score=0;
 	bob = new Character(40,550)
 //close setup
 }
@@ -162,7 +170,7 @@ void draw(){
 	background(153,204,255);
 	drawClouds();
 	keepingtrack++;
-	if (keepingtrack == count-1){
+	if (keepingtrack == 999){
 		generateBuilding();
 		keepingtrack = 0;
 	}
@@ -182,9 +190,9 @@ void draw(){
 	rect(1300, 650, -1300, 50);
 	bob.drawCharacter();
 	fill(255,255,255);
-	textSize(20);
-	updateScore();
-	text("Score: "+score,10,20);
+	var score = 0;
+	score = score++;
+	text("score = "+score,10,20);
 }
 
 		</script>
