@@ -10,17 +10,33 @@
 class Car{
 	var carX;
 	var carY;
+	var carSpeed;
 
-
-	Car(carX, carY){
-	  fill(255,0,0);
-	  rect(x, y, 60, 24);
-	  rect(x+15, y-15, 30, 15);
-    fill(0, 0, 0);
-	  ellipse(x+15, y+30, 15,15);
-	  ellipse(x+45, y+30, 15, 15);
+	Car(x, y){
+	  carX = x;
+		carY = y;
 	}
+	void drawCar(){
+		fill(255,255,0);
+		rect(carX, carY, 100, 64);
+		rect(carX+45, carY-45, 70, 55);
+		fill(0,0,0);
+		ellipse(carX+45, carY+60, 25,25);
+		ellipse(carX+75, carY+60, 25,25);
 }
+		void moveCar(){
+				carX = carX-3;
+				if(carX<40){
+					console.log("you lost!")
+						// if (bob.yPositionChar > ){
+						//
+						// }
+
+				}
+			}
+}
+
+var bob;
 class Character{
 	var xPositionChar;
 	var yPositionChar;
@@ -31,7 +47,7 @@ class Character{
 	var picChange;
 	var yvelocity = 0;
 	var gravity = 2;
-	var ground = 550;
+	var ground = 515;
 	var ceiling = 10;
 
 	Character(x, y){
@@ -88,7 +104,6 @@ void generateBuilding(){
 		building1 = new Building(currentPos,random(150, 250),color(214,187,242),3,700,width);
 		layer1.push(building1);
 		currentPos = currentPos + width;
-
 	}
  currentPos=position;
 	for (var i = 0; i < count; i++) {
@@ -106,7 +121,7 @@ void generateBuilding(){
 		currentPos = currentPos + width;
 	}
 	position = currentPos+width;
-			console.log(layer1.length())
+
 }
 
 
@@ -144,9 +159,9 @@ void drawClouds(){
 	leftX-=1;
 	rightX+=1;
 	fill(255, 255, 255);
-	ellipse(rightX, 100, 126, 97);
-	ellipse(rightX+62, 100, 70, 60);
-	ellipse(rightX-62, 100, 70, 60);
+	ellipse(rightX, 50, 126, 97);
+	ellipse(rightX+62, 50, 70, 60);
+	ellipse(rightX-62, 50, 70, 60);
 }
 
 		var building1;
@@ -160,7 +175,7 @@ void drawClouds(){
 void updateScore(){
 	score++;
 }
-/void checkForWin(){
+void checkForWin(){
 	if (score>= 8000){
  		window.location = "win.html";
 	}
@@ -169,9 +184,10 @@ void updateScore(){
 void setup(){
   size(1250,700);
   background(153,204,255);
-	generateBuilding()
+	generateBuilding();
 	score = 0;
-	bob = new Character(40,550)
+	bob = new Character(40,550);
+	car1 = new Car(1300,615);
 //close setup
 }
 
@@ -197,8 +213,10 @@ void draw(){
 		layer3[i].moveBuilding();
 	}
 	fill(168,168,168);
-	rect(1300, 650, -1300, 50);
+	rect(1300, 615, -1300, 90);
 	bob.drawCharacter();
+	car1.drawCar();
+	car1.moveCar();
 	fill(255,255,255);
 	textSize(20);
 	updateScore();
