@@ -132,8 +132,6 @@ void drawClouds(){
     var layer2 = [];
     var layer3 = [];
 
-var score = 0;
-
 void setup(){
   size(1250,700);
   background(153,204,255);
@@ -166,7 +164,10 @@ void draw(){
 	fill(168,168,168);
 	rect(1300, 650, -1300, 50);
 	bob.drawCharacter();
-	text(score = score++);
+	fill(255,255,255);
+	var score = 0;
+	score = score++;
+	text("score = "+score,10,20);
 }
 
 		</script>
