@@ -7,7 +7,20 @@
 		/* @pjs preload="/static/runningfigure2.png"; */
 		/* @pjs preload="/static/flyingfigure.png"; */
 
+class Car{
+	var carX;
+	var carY;
 
+
+	Car(carX, carY){
+	  fill(255,0,0);
+	  rect(x, y, 60, 24);
+	  rect(x+15, y-15, 30, 15);
+    fill(0, 0, 0);
+	  ellipse(x+15, y+30, 15,15);
+	  ellipse(x+45, y+30, 15, 15);
+	}
+}
 class Character{
 	var xPositionChar;
 	var yPositionChar;
