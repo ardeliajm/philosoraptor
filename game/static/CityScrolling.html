@@ -33,7 +33,7 @@ class Character{
 	}
 
 	void drawCharacter(){
-		image(currentPic, 20, 552, currentPic.width/2, currentPic.height/2);
+		image(currentPic, 20, 590, currentPic.width/2, currentPic.height/2);
 		picChange += 1;
 		if (picChange == 8){
 			if (currentPic == pic1){
@@ -49,21 +49,8 @@ class Character{
 			currentPic = pic3;
   }
 	}
-<<<<<<< HEAD
-
-//some notes
-// var velocity = 12;
-// var acceleration = .5;
-// var ground =
-// postion += velocity
-
-//	void keyPressed(value==32) {
-//				yPositionChar = yPositionChar+velocity;
-}
-=======
  }
 
->>>>>>> f03e1a001a66d51f5a11f724eb426ba272028fc9
 var position = 0;
 var count = 1000;
 var keepingtrack = 0;
@@ -125,9 +112,10 @@ class Building {
 		}
 	}
 }
-var leftX = 121;
-var rightX = 210;
+var leftX = 0;
+var rightX = 0;
 void drawClouds(){
+	noStroke();
 	leftX-=1;
 	rightX+=1;
 	fill(255, 255, 255);
