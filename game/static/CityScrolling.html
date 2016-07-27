@@ -3,11 +3,9 @@
 		<title>City Hustle!</title>
 		<script src="processing-1.4.1.js"></script>
 		<script type="text/processing" data-processing-target="mycanvas">
-/* @pjs preload="/static/standingfigure.png"; */
-/* @pjs preload="/static/jumpingfigure.png"; */
-/* @pjs preload="/static/runningfigure.png"; */
-
-
+		/* @pjs preload="/static/runningfigure.png"; */
+		/* @pjs preload="/static/runningfigure2.png"; */
+		/* @pjs preload="/static/flyingfigure.png"; */
 
 
 class Character{
@@ -54,7 +52,6 @@ class Character{
 				currentPic = pic1;
 			}
 			picChange=0;
-
 		}
 		if (keyPressed == true) {
 			yvelocity=-10;
@@ -64,7 +61,7 @@ class Character{
  }
 
 var position = 0;
-var count = 10;
+var count = 1000;
 var keepingtrack = 0;
 void generateBuilding(){
 	var currentPos = position;
@@ -77,7 +74,6 @@ void generateBuilding(){
 
 	}
  currentPos=position;
- width;
 	for (var i = 0; i < count; i++) {
 		width = random(90,120);
 		building2 = new Building(currentPos,random(260, 350),color(143,107,181),7,700,width);
@@ -85,7 +81,6 @@ void generateBuilding(){
 		currentPos = currentPos + width;
 	}
  currentPos=position;
- width;
 	for (var i = 0; i < count; i++){
 		width = random(60,90);
 		//Buildings in Front Row
@@ -115,7 +110,6 @@ class Building {
   		width = w;
   	}
   void moveBuilding(){
-
 		xposition = xposition - speed;
   }
   void drawBuilding(){
@@ -138,15 +132,13 @@ void drawClouds(){
 	ellipse(rightX-62, 100, 70, 60);
 }
 
-
 		var building1;
     var building2;
     var building3;
     var layer1 = [];
     var layer2 = [];
     var layer3 = [];
-
-		var score;
+		var score=0;
 
 void updateScore(){
 	score++;
@@ -155,12 +147,11 @@ void updateScore(){
 // 	if (score == 10000){}
 // }
 
-
 void setup(){
   size(1250,700);
   background(153,204,255);
 	generateBuilding()
-	score=0;
+	score = 0;
 	bob = new Character(40,550)
 //close setup
 }
@@ -170,7 +161,7 @@ void draw(){
 	background(153,204,255);
 	drawClouds();
 	keepingtrack++;
-	if (keepingtrack == 999){
+	if (keepingtrack == count-1){
 		generateBuilding();
 		keepingtrack = 0;
 	}
@@ -190,9 +181,9 @@ void draw(){
 	rect(1300, 650, -1300, 50);
 	bob.drawCharacter();
 	fill(255,255,255);
-	var score = 0;
-	score = score++;
-	text("score = "+score,10,20);
+	textSize(20);
+	updateScore();
+	text("Score: "+score,10,20);
 }
 
 		</script>
