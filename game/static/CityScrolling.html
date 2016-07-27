@@ -19,6 +19,7 @@ class Character{
 	var yvelocity = 0;
 	var gravity = 2;
 	var ground = 550;
+	var ceiling = 10;
 
 	Character(x, y){
 		xPositionChar = x;
@@ -39,6 +40,9 @@ class Character{
 		if (yPositionChar > ground){
 			yPositionChar = ground;
 		}
+		if (yPositionChar < ceiling){
+			yPositionChar = ceiling-1;
+		}
 		if (yPositionChar == ground){
 			if (currentPic == pic3){
 				currentPic = pic1;
@@ -56,7 +60,7 @@ class Character{
 		if (keyPressed == true) {
 			yvelocity=-10;
 			currentPic = pic3;
-  }
+  	}
 	}
  }
 
@@ -68,7 +72,7 @@ void generateBuilding(){
 	var width;
 	for (var i = 0; i < count; i++) {
 		width = random(120,150);
-		building1 = new Building(currentPos,random(150, 250),color(214,187,242),3,700,width);
+		building1 = new Building(currentPos,random(200, 300),color(214,187,242),3,700,width);
 		layer1.push(building1);
 		currentPos = currentPos + width;
 
@@ -143,9 +147,12 @@ void drawClouds(){
 void updateScore(){
 	score++;
 }
-// void win(){
-// 	if (score == 10000){}
-// }
+
+void checkForWin(){
+	if (score>= 8000){
+ 		window.location = "win.html";
+	}
+}
 
 void setup(){
   size(1250,700);
@@ -160,6 +167,9 @@ void setup(){
 void draw(){
 	background(153,204,255);
 	drawClouds();
+	if (score == 1400){
+		drawClouds();
+	}
 	keepingtrack++;
 	if (keepingtrack == count-1){
 		generateBuilding();
@@ -183,6 +193,7 @@ void draw(){
 	fill(255,255,255);
 	textSize(20);
 	updateScore();
+	checkForWin();
 	text("Score: "+score,10,20);
 }
 
