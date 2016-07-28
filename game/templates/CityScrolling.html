@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<title>The Adventures Of Super Bob!</title>
+		<link rel="shortcut icon" href="../static/favicon.ico">
 		<script src="../static/processing-1.4.1.js"></script>
 		<script type="text/processing" data-processing-target="mycanvas">
 		/* @pjs preload="/static/runningfigure.png"; */
@@ -26,7 +27,7 @@ class Car{
 		void moveCar(){
 				carX = carX-carSpeed;
 				if(carX<=40 && carX >=0 && bob.yPositionChar>=carY){
-								window.location="lose.html";
+								window.location="/lose";
 				}
 		}
 }
@@ -181,7 +182,7 @@ void updateScore(){
 	score++;
 }
 void checkForWin(){
-	if (score == 800){
+	if (score == 1500){
 		window.location = "/win";
 		console.log('win');
 	}
