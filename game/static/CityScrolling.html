@@ -87,37 +87,35 @@ class Character{
   }
 	}
  }
-
-var position = 0;
-var count = 1000;
-var keepingtrack = 0;
-void generateBuilding(){
-	var currentPos = position;
-	var width;
-	for (var i = 0; i < count; i++) {
-		width = random(120,150);
-		building1 = new Building(currentPos,random(150, 250),color(214,187,242),3,700,width);
-		layer1.push(building1);
-		currentPos = currentPos + width;
-	}
- currentPos=position;
-	for (var i = 0; i < count; i++) {
-		width = random(90,120);
-		building2 = new Building(currentPos,random(260, 350),color(143,107,181),7,700,width);
-		layer2.push(building2);
-		currentPos = currentPos + width;
-	}
- currentPos=position;
-	for (var i = 0; i < count; i++){
-		width = random(60,90);
-		//Buildings in Front Row
-		building3 = new Building(currentPos,random(50,500),color(91,47,138),9,700,width);
-		layer3.push(building3);
-		currentPos = currentPos + width;
-	}
-	position = currentPos+width;
-
-}
+ var position = 0;
+ var count = 1000;
+ var keepingtrack = 0;
+ void generateBuilding(){
+ 	var currentPos = position;
+ 	var width;
+ 	for (var i = 0; i < count; i++) {
+ 		width = random(40,60);
+ 		building1 = new Building(currentPos,random(50, 200),color(50,157,168),3,700,width);
+ 		layer1.push(building1);
+ 		currentPos = currentPos + width;
+ 	}
+  currentPos=position;
+ 	for (var i = 0; i < count; i++) {
+ 		width = random(90,120);
+ 		building2 = new Building(currentPos,random(200, 350),color(70,200,215),7,700,width);
+ 		layer2.push(building2);
+ 		currentPos = currentPos + width;
+ 	}
+  currentPos=position;
+ 	for (var i = 0; i < count; i++){
+ 		width = random(160,180);
+ 		//Buildings in Front Row
+ 		building3 = new Building(currentPos,random(90,600),color(138,244,255),9,700,width);
+ 		layer3.push(building3);
+ 		currentPos = currentPos + width;
+ 	}
+ 	position = currentPos+width;
+ }
 
 
 class Building {
