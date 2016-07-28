@@ -17,9 +17,9 @@ class Character{
 	var currentPic;
 	var picChange;
 	var yvelocity = 0;
-	var gravity = 2;
+	var gravity = 4;
 	var ground = 550;
-	var ceiling = 10;
+	var ceiling = 45;
 
 	Character(x, y){
 		xPositionChar = x;
@@ -43,6 +43,7 @@ class Character{
 		if (yPositionChar < ceiling){
 			yPositionChar = ceiling-1;
 		}
+
 		if (yPositionChar == ground){
 			if (currentPic == pic3){
 				currentPic = pic1;
@@ -147,15 +148,14 @@ void drawClouds(){
 void updateScore(){
 	score++;
 }
-/void checkForWin(){
+void checkForWin(){
 	if (score>= 8000){
  		window.location = "win.html";
 	}
-
 }
 void setup(){
   size(1250,700);
-  background(153,204,255);
+  background(122,175,228);
 	generateBuilding()
 	score = 0;
 	bob = new Character(40,550)
@@ -164,7 +164,7 @@ void setup(){
 
 //function for drawing buildings, road, and everything else//loops 60 frames per sec
 void draw(){
-	background(153,204,255);
+	background(122,175, 228);
 	drawClouds();
 	keepingtrack++;
 	if (keepingtrack == count-1){
@@ -187,10 +187,10 @@ void draw(){
 	rect(1300, 650, -1300, 50);
 	bob.drawCharacter();
 	fill(255,255,255);
-	textSize(20);
+	textSize(40);
 	updateScore();
 	checkForWin();
-	text("Score: "+score,10,20);
+	text("Score: "+score,10,40);
 }
 
 		</script>
