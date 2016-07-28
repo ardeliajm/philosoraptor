@@ -2,6 +2,7 @@
 	<head>
 		<title>The Adventures Of Super Bob!</title>
 		<link rel="shortcut icon" href="../static/favicon.ico">
+		<link rel="stylesheet" href="/static/citystyle.css">
 		<script src="../static/processing-1.4.1.js"></script>
 		<script type="text/processing" data-processing-target="mycanvas">
 		/* @pjs preload="/static/runningfigure.png"; */
@@ -182,7 +183,7 @@ void updateScore(){
 	score++;
 }
 void checkForWin(){
-	if (score == 1500){
+	if (score == 800){
 		window.location = "/win";
 		console.log('win');
 	}
