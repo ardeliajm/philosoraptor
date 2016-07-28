@@ -2,13 +2,18 @@
 	<head>
 		<title>The Adventures Of Super Bob!</title>
 		<link rel="shortcut icon" href="../static/favicon.ico">
+		<link rel="stylesheet" href="/static/citystyle.css">
 		<script src="../static/processing-1.4.1.js"></script>
 		<script type="text/processing" data-processing-target="mycanvas">
 		/* @pjs preload="/static/runningfigure.png"; */
 		/* @pjs preload="/static/runningfigure2.png"; */
 		/* @pjs preload="/static/flyingfigure.png"; */
 		/* @pjs preload="/static/cab.png"; */
-var car;
+var car1;
+var car2;
+var car3;
+var car4;
+var car5;
 class Car{
 	var carX;
 	var carY;
@@ -32,19 +37,21 @@ class Car{
 				}
 		}
 }
-// void generateCar(){
-// 		car = new Car(1300,490);
-// 		car.drawCar();
-// 		if (score==1000){
-// 			carSpeed++;
-// 			if (score==2000){
-// 			carSpeed++;
-// 				if (score==3000){
-// 					carSpeed++;
-// 					if (score==4000){
-// 						carSpeed++;
-// }}}}
-//}
+
+function generateCar(){
+	carSpeed = 6;
+			if (score>1000){
+				carSpeed+=2;
+				if (score>2000){
+				carSpeed+=6;
+					if (score>3000){
+						carSpeed+=10;
+						if (score>4000){
+							carSpeed+=12;
+	}}}}
+	return new Car(random(1300,3000),490,carSpeed);
+
+}
 var bob;
 class Character{
 	var xPositionChar;
@@ -99,6 +106,7 @@ class Character{
 		if (keyPressed == true) {
 			yvelocity=-10;
 			currentPic = pic3;
+
   }
 	}
  }
@@ -183,7 +191,7 @@ void updateScore(){
 	score++;
 }
 void checkForWin(){
-	if (score==3050){
+	if (score==8000){
 		window.location = "/win";
 		console.log('win');
 	}
@@ -191,32 +199,15 @@ void checkForWin(){
 void setup(){
 	size(1250,700);
 	fill(0,0,0);
-	textSize(40);
-	text("The Adventures of Super Bob!");
   background(48,124,221);
 	generateBuilding();
+	car1 = generateCar();
+	car2 = generateCar();
+	car3 = generateCar();
+	car4 = generateCar();
+	car5 = generateCar();
 	score = 0;
 	bob = new Character(40,550);
-	car1 = new Car(1300,490, 5);
-	car2 = new Car(2000,490, 6);
-	car3 = new Car(3900,490, 7);
-	car4 = new Car(4700,490, 8);
-	car5 = new Car(5700,490, 9);
-	car6 = new Car(6700,490, 9);
-	car7 = new Car(7000,490, 10);
-	car8 = new Car(8500,490, 11);
-	car9 = new Car(9000,490, 7);
-	car10 = new Car(10300,490, 7);
-	car11 = new Car(11700,490, 7);
-	car12 = new Car(12400,490, 4);
-	car13 = new Car(13100,490, 5);
-	car14 = new Car(14000,490, 8);
-	car15 = new Car(15300,490, 9);
-	car16 = new Car(16700,490, 6);
-	car17 = new Car(17300,490, 12);
-	car18 = new Car(18800,490, 9);
-	car19 = new Car(193000,490, 10);
-	car20 = new Car(21000,490, 10);
 
 //close setup
 }
@@ -247,60 +238,45 @@ void draw(){
 	rect(1300, 615, -1300, 90);
 	bob.drawCharacter();
 	car1.drawCar();
-	car2.drawCar();
-	car3.drawCar();
-	car4.drawCar();
-	car6.drawCar();
-	car7.drawCar();
-	car8.drawCar();
-	car9.drawCar();
-	car10.drawCar();
-	car11.drawCar();
-	car12.drawCar();
-	car13.drawCar();
-	car14.drawCar();
-	car15.drawCar();
-	car16.drawCar();
-	car17.drawCar();
-	car18.drawCar();
-	car19.drawCar();
-	car20.drawCar();
-
 	car1.moveCar();
+	car2.drawCar();
 	car2.moveCar();
+	car3.drawCar();
 	car3.moveCar();
+	car4.drawCar();
 	car4.moveCar();
 	car5.drawCar();
 	car5.moveCar();
-	car6.moveCar();
-	car7.moveCar();
-	car8.moveCar();
-	car9.moveCar();
-	car10.moveCar();
-	car11.moveCar();
-	car12.moveCar();
-	car13.moveCar();
-	car14.moveCar();
-	car15.moveCar();
-	car16.moveCar();
-	car17.moveCar();
-	car18.moveCar();
-	car19.moveCar();
-	car20.moveCar();
-
 	fill(255,255,255);
 	textSize(40);
 	updateScore();
 	checkForWin();
 	text("Score: "+score,10,40);
-}
 
+	if (car1.carX<-200){
+	 	car1 = generateCar();
+	}
+	if (car2.carX<-200){
+		car2 = generateCar();
+	}
+	if (car3.carX<-200){
+		car3 = generateCar();
+	}
+	if (car4.carX<-200){
+		car4 = generateCar();
+	}
+	if (car5.carX<-200){
+		car5 = generateCar();
+	}
+}
 		</script>
 	</head>
-	<body>
+	<body style="background-color: black">
+
 		<h1> The Adventures of Super Bob!</p>
 		<canvas id="mycanvas"></canvas>
-<!-- <iframe width="1" height="1" src="https://www.youtube.com/embed/wneADJ9_Qy0?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe> -->
-<!-- <iframe width="1" height="1" src="https://www.youtube.com/embed/AtEfAcWPvps?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe> -->
+		<!-- <iframe width="1" height="1" src="https://www.youtube.com/embed/p1jOnTlfMbM?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe>
+		<iframe width="1" height="1" src="https://www.youtube.com/embed/AtEfAcWPvps?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe> -->
+			</body>
 	</body>
 </html>
