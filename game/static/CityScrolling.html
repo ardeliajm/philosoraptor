@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Super Bob!</title>
+		<title>Super Bob</title>
 		<script src="processing-1.4.1.js"></script>
 		<script type="text/processing" data-processing-target="mycanvas">
 		/* @pjs preload="/static/runningfigure.png"; */
@@ -23,10 +23,11 @@ class Car{
 		image(taxicab, carX, carY, taxicab.width/2, taxicab.height/2);
 }
 		void moveCar(){
-				carX = carX-3;
-				if(carX<40 && bob.yPositionChar < taxicab.carY){
+				carX = carX-5;
+				if(carX<=40 && bob.yPositionChar<= taxicab.carY){
 					window.location = "lose.html";
 				}
+
 		}
 }
 
@@ -220,5 +221,7 @@ void draw(){
 	</head>
 	<body>
 		<canvas id="mycanvas"></canvas>
+<!-- <iframe width="1" height="1" src="https://www.youtube.com/embed/wneADJ9_Qy0?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe> -->
+<!-- <iframe width="1" height="1" src="https://www.youtube.com/embed/AtEfAcWPvps?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe> -->
 	</body>
 </html>

@@ -7,7 +7,9 @@ jinja_environment = jinja2.Environment(
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.redirect("/static/CityScrolling.html")
+        template = jinja_environment.get_template('OpeningScreen.html')
+        html = template.render()
+        self.response.write(html)
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
