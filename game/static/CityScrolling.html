@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>City Hustle!</title>
+		<title>Super Bob!</title>
 		<script src="processing-1.4.1.js"></script>
 		<script type="text/processing" data-processing-target="mycanvas">
 		/* @pjs preload="/static/runningfigure.png"; */
@@ -42,7 +42,7 @@ class Character{
 	var yvelocity = 0;
 	var gravity = 2;
 	var ground = 515;
-	var ceiling = 40;
+	var ceiling = 0;
 
 	Character(x, y){
 		xPositionChar = x;
@@ -64,7 +64,7 @@ class Character{
 			yPositionChar = ground;
 		}
 		if (yPositionChar < ceiling){
-			yPositionChar = ceiling-1;
+			yPositionChar = ceiling -1;
 		}
 
 		if (yPositionChar == ground){
@@ -95,14 +95,14 @@ class Character{
  	var width;
  	for (var i = 0; i < count; i++) {
  		width = random(40,60);
- 		building1 = new Building(currentPos,random(50, 200),color(50,157,168),3,700,width);
+ 		building1 = new Building(currentPos,random(50, 200),color(164,176,255),3,700,width);
  		layer1.push(building1);
  		currentPos = currentPos + width;
  	}
   currentPos=position;
  	for (var i = 0; i < count; i++) {
  		width = random(90,120);
- 		building2 = new Building(currentPos,random(200, 350),color(70,200,215),7,700,width);
+ 		building2 = new Building(currentPos,random(200, 350),color(149,160,233),7,700,width);
  		layer2.push(building2);
  		currentPos = currentPos + width;
  	}
@@ -110,7 +110,7 @@ class Character{
  	for (var i = 0; i < count; i++){
  		width = random(160,180);
  		//Buildings in Front Row
- 		building3 = new Building(currentPos,random(90,600),color(138,244,255),9,700,width);
+ 		building3 = new Building(currentPos,random(90,600),color(85,97,176),9,700,width);
  		layer3.push(building3);
  		currentPos = currentPos + width;
  	}
@@ -175,7 +175,7 @@ void checkForWin(){
 }
 void setup(){
   size(1250,700);
-  background(153,204,255);
+  background(48,124,221);
 	generateBuilding();
 	score = 0;
 	bob = new Character(40,550);
@@ -185,7 +185,7 @@ void setup(){
 
 //function for drawing buildings, road, and everything else//loops 60 frames per sec
 void draw(){
-	background(122,175, 228);
+	background(48,124,221);
 	drawClouds();
 	keepingtrack++;
 	if (keepingtrack == count-1){
