@@ -7,7 +7,7 @@
 		/* @pjs preload="/static/runningfigure2.png"; */
 		/* @pjs preload="/static/flyingfigure.png"; */
 		/* @pjs preload="/static/cab.png"; */
-
+var car;
 class Car{
 	var carX;
 	var carY;
@@ -17,31 +17,32 @@ class Car{
 	Car(x, y){
 	  carX = x;
 		carY = y;
-<<<<<<< HEAD:game/static/CityScrolling.html
 		carSpeed=5;
-		taxicab = loadImage("cab.png");
-=======
 		taxicab = loadImage("../static/cab.png");
->>>>>>> a10b07b046808917ac89ba5d600f6cd796eb241e:game/templates/CityScrolling.html
 	}
 	void drawCar(){
 		image(taxicab, carX, carY, taxicab.width/2, taxicab.height/2);
 }
 		void moveCar(){
 				carX = carX-carSpeed;
-				if(carX<=40 && bob.yPositionChar>=carY){
-										window.location="lose.html";
+				if(carX<=40 && carX >=0 && bob.yPositionChar>=carY){
+								window.location="lose.html";
 				}
-				// if(bob.yPositionChar<=carY){
-				// 	score = score+10;
-				// }
 		}
 }
 void generateCar(){
 		car = new Car(1300,490);
-
+		car.drawCar();
+		if (score==1000){
+			carSpeed++;
+			if (score==2000){
+			carSpeed++;
+				if (score==3000){
+					carSpeed++;
+					if (score==4000){
+						carSpeed++;
+}}}}
 }
-
 var bob;
 class Character{
 	var xPositionChar;
@@ -192,6 +193,7 @@ void setup(){
 	score = 0;
 	bob = new Character(40,550);
 	car1 = new Car(1300,490);
+	car = new Car(1300,490);
 //close setup
 }
 
@@ -216,9 +218,10 @@ void draw(){
 		layer3[i].drawBuilding();
 		layer3[i].moveBuilding();
 	}
-	// for(var i = 0; i < 1; i++){
-	// 	generateCar();
-	// }
+	if (score%100==0){
+		generateCar();
+	}
+	car.moveCar();
 	fill(168,168,168);
 	rect(1300, 615, -1300, 90);
 	bob.drawCharacter();
