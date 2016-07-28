@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<title>The Adventures Of Super Bob!</title>
+		<link rel="shortcut icon" href="../static/favicon.ico">
 		<script src="../static/processing-1.4.1.js"></script>
 		<script type="text/processing" data-processing-target="mycanvas">
 		/* @pjs preload="/static/runningfigure.png"; */
@@ -25,7 +26,7 @@ class Car{
 		void moveCar(){
 				carX = carX-5;
 				if(carX<=40 && bob.yPositionChar<= taxicab.carY){
-					window.location = "lose.html";
+					window.location = "/lose";
 				}
 
 		}
