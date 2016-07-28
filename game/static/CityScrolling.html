@@ -187,7 +187,7 @@ void drawClouds(){
 void updateScore(){
 	score++;
 }
-<<<<<<< HEAD
+
 // void win(){
 // 	if (score == 10000){}
 // }
@@ -196,7 +196,7 @@ void setup(){
   background(153,204,255);
 	generateBuilding()
 	bob = new Character(40,550)
-=======
+
 void checkForWin(){
 	if (score>= 8000){
  		window.location = "win.html";
@@ -210,7 +210,6 @@ void setup(){
 	score = 0;
 	bob = new Character(40,550);
 	car1 = new Car(1300,615);
->>>>>>> 2edfc416bb0eb4316db1c34aaa2fe4441eb9e78d
 //close setup
 }
 
@@ -245,16 +244,15 @@ void draw(){
 	car1.drawCar();
 	car1.moveCar();
 	fill(255,255,255);
-<<<<<<< HEAD
+
 	var score = 0;
 	score = score++;
 	text("score = "+score,10,20);
-=======
 	textSize(20);
 	updateScore();
 	checkForWin();
 	text("Score: "+score,10,20);
->>>>>>> 2edfc416bb0eb4316db1c34aaa2fe4441eb9e78d
+
 }
 
 		</script>
