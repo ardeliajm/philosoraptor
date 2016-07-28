@@ -42,7 +42,7 @@ class Character{
 	var yvelocity = 0;
 	var gravity = 2;
 	var ground = 515;
-	var ceiling = 10;
+	var ceiling = 40;
 
 	Character(x, y){
 		xPositionChar = x;
@@ -66,6 +66,7 @@ class Character{
 		if (yPositionChar < ceiling){
 			yPositionChar = ceiling-1;
 		}
+
 		if (yPositionChar == ground){
 			if (currentPic == pic3){
 				currentPic = pic1;
@@ -94,28 +95,23 @@ void generateBuilding(){
 	var currentPos = position;
 	var width;
 	for (var i = 0; i < count; i++) {
-<<<<<<< HEAD
-		width = random(40,60);
-		building1 = new Building(currentPos,random(50, 200),color(50,157,168),3,700,width);
-=======
 		width = random(120,150);
 		building1 = new Building(currentPos,random(150, 250),color(214,187,242),3,700,width);
->>>>>>> 0ac5138317441aace5ac9885a2dd09acb9c886af
 		layer1.push(building1);
 		currentPos = currentPos + width;
 	}
  currentPos=position;
 	for (var i = 0; i < count; i++) {
 		width = random(90,120);
-		building2 = new Building(currentPos,random(200, 350),color(70,200,215),7,700,width);
+		building2 = new Building(currentPos,random(260, 350),color(143,107,181),7,700,width);
 		layer2.push(building2);
 		currentPos = currentPos + width;
 	}
  currentPos=position;
 	for (var i = 0; i < count; i++){
-		width = random(160,180);
+		width = random(60,90);
 		//Buildings in Front Row
-		building3 = new Building(currentPos,random(90,600),color(138,244,255),9,700,width);
+		building3 = new Building(currentPos,random(50,500),color(91,47,138),9,700,width);
 		layer3.push(building3);
 		currentPos = currentPos + width;
 	}
@@ -178,7 +174,6 @@ void checkForWin(){
 	if (score>= 8000){
  		window.location = "win.html";
 	}
-
 }
 void setup(){
   size(1250,700);
@@ -192,7 +187,7 @@ void setup(){
 
 //function for drawing buildings, road, and everything else//loops 60 frames per sec
 void draw(){
-	background(153,204,255);
+	background(122,175, 228);
 	drawClouds();
 	keepingtrack++;
 	if (keepingtrack == count-1){
@@ -216,15 +211,11 @@ void draw(){
 	bob.drawCharacter();
 	car1.drawCar();
 	car1.moveCar();
-<<<<<<< HEAD
-	fill(198,198,198);
-=======
 	fill(255,255,255);
->>>>>>> 0ac5138317441aace5ac9885a2dd09acb9c886af
-	textSize(20);
+	textSize(40);
 	updateScore();
 	checkForWin();
-	text("Score: "+score,10,20);
+	text("Score: "+score,10,40);
 }
 
 		</script>
