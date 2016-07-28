@@ -20,18 +20,17 @@ class Car{
 		taxicab = loadImage("cab.png");
 	}
 	void drawCar(){
-		image(taxicab, carX, carX, taxicab.width/2, taxicab.height/2);
+		image(taxicab, carX, carY, taxicab.width/2, taxicab.height/2);
 }
 		void moveCar(){
 				carX = carX-3;
 				if(carX<40){
 					window.location = "lose.html";
-						if (bob.yPositionChar > taxicab.carY){
+				}	else if (bob.yPositionChar < taxicab.carY){
 							window.location = "lose.html";
 						}
 				}
 			}
-}
 
 var bob;
 class Character{
@@ -63,42 +62,42 @@ class Character{
 		picChange += 1;
 		yPositionChar=yPositionChar+yvelocity;
 		yvelocity=yvelocity+gravity;
-			if (yPositionChar > ground){
-				yPositionChar = ground;
+		if (yPositionChar > ground){
+			yPositionChar = ground;
+		}
+		if (yPositionChar < ceiling){
+			yPositionChar = ceiling-1;
+		}
+		if (yPositionChar == ground){
+			if (currentPic == pic3){
+				currentPic = pic1;
 			}
-			if (yPositionChar < ceiling){
-				yPositionChar = ceiling-1;
+		}
+		if (picChange == 8){
+			if (currentPic == pic1){
+				currentPic = pic2;
 			}
-			if (yPositionChar == ground){
-				if (currentPic == pic3){
-					currentPic = pic1;
-				}
+			else if (currentPic == pic2) {
+				currentPic = pic1;
 			}
-			if (picChange == 8){
-				if (currentPic == pic1){
-					currentPic = pic2;
-				}
-				else if (currentPic == pic2) {
-					currentPic = pic1;
-				}
-				picChange=0;
-			}
-			if (keyPressed == true) {
-				yvelocity=-10;
-				currentPic = pic3;
-  		}
+			picChange=0;
+		}
+		if (keyPressed == true) {
+			yvelocity=-10;
+			currentPic = pic3;
+  }
 	}
  }
 
 var position = 0;
-var count = 20;
+var count = 1000;
 var keepingtrack = 0;
 void generateBuilding(){
 	var currentPos = position;
 	var width;
 	for (var i = 0; i < count; i++) {
 		width = random(120,150);
-		building1 = new Building(currentPos,random(150, 300),color(214,187,242),3,700,width);
+		building1 = new Building(currentPos,random(150, 250),color(214,187,242),3,700,width);
 		layer1.push(building1);
 		currentPos = currentPos + width;
 	}
@@ -117,16 +116,6 @@ void generateBuilding(){
 		layer3.push(building3);
 		currentPos = currentPos + width;
 	}
-
-	//Obstacles linked with Building3 (Front Row)
-	currentPos=position;
-  width;
- 	for (var i = 0; i < count; i++){
- 		width = random(60,90);
- 		obstacles = new Building(currentPos,random(500,900),color(0,0,0),9,700,width);
- 		layer4.push(obstacles);
- 		currentPos = currentPos + width;
- 	}
 	position = currentPos+width;
 
 }
@@ -174,26 +163,14 @@ void drawClouds(){
 		var building1;
     var building2;
     var building3;
-		var obstacles
     var layer1 = [];
     var layer2 = [];
     var layer3 = [];
-		var layer4 = [];
 		var score=0;
 
 void updateScore(){
 	score++;
 }
-
-// void win(){
-// 	if (score == 10000){}
-// }
-void setup(){
-  size(1250,700);
-  background(153,204,255);
-	generateBuilding()
-	bob = new Character(40,550)
-
 void checkForWin(){
 	if (score>= 8000){
  		window.location = "win.html";
@@ -206,7 +183,7 @@ void setup(){
 	generateBuilding();
 	score = 0;
 	bob = new Character(40,550);
-	car1 = new Car(1300,615);
+	car1 = new Car(1300,490);
 //close setup
 }
 
@@ -215,7 +192,7 @@ void draw(){
 	background(153,204,255);
 	drawClouds();
 	keepingtrack++;
-	if (keepingtrack == 19){
+	if (keepingtrack == count-1){
 		generateBuilding();
 		keepingtrack = 0;
 	}
@@ -231,25 +208,16 @@ void draw(){
 		layer3[i].drawBuilding();
 		layer3[i].moveBuilding();
 	}
-	for(var i = 0; i < layer1.length; i++){
-		layer4[i].drawBuilding();
-		layer4[i].moveBuilding();
-	}
 	fill(168,168,168);
 	rect(1300, 615, -1300, 90);
 	bob.drawCharacter();
 	car1.drawCar();
 	car1.moveCar();
 	fill(255,255,255);
-
-	var score = 0;
-	score = score++;
-	text("score = "+score,10,20);
 	textSize(20);
 	updateScore();
 	checkForWin();
 	text("Score: "+score,10,20);
-
 }
 
 		</script>
