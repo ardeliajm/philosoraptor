@@ -63,30 +63,30 @@ class Character{
 		picChange += 1;
 		yPositionChar=yPositionChar+yvelocity;
 		yvelocity=yvelocity+gravity;
-		if (yPositionChar > ground){
-			yPositionChar = ground;
-		}
-		if (yPositionChar < ceiling){
-			yPositionChar = ceiling-1;
-		}
-		if (yPositionChar == ground){
-			if (currentPic == pic3){
-				currentPic = pic1;
+			if (yPositionChar > ground){
+				yPositionChar = ground;
 			}
-		}
-		if (picChange == 8){
-			if (currentPic == pic1){
-				currentPic = pic2;
+			if (yPositionChar < ceiling){
+				yPositionChar = ceiling-1;
 			}
-			else if (currentPic == pic2) {
-				currentPic = pic1;
+			if (yPositionChar == ground){
+				if (currentPic == pic3){
+					currentPic = pic1;
+				}
 			}
-			picChange=0;
-		}
-		if (keyPressed == true) {
-			yvelocity=-10;
-			currentPic = pic3;
-  }
+			if (picChange == 8){
+				if (currentPic == pic1){
+					currentPic = pic2;
+				}
+				else if (currentPic == pic2) {
+					currentPic = pic1;
+				}
+				picChange=0;
+			}
+			if (keyPressed == true) {
+				yvelocity=-10;
+				currentPic = pic3;
+  		}
 	}
  }
 
