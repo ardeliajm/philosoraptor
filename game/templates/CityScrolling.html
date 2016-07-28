@@ -8,7 +8,7 @@
 		/* @pjs preload="/static/runningfigure2.png"; */
 		/* @pjs preload="/static/flyingfigure.png"; */
 		/* @pjs preload="/static/cab.png"; */
-
+var car;
 class Car{
 	var carX;
 	var carY;
@@ -18,20 +18,32 @@ class Car{
 	Car(x, y){
 	  carX = x;
 		carY = y;
+		carSpeed=5;
 		taxicab = loadImage("../static/cab.png");
 	}
 	void drawCar(){
 		image(taxicab, carX, carY, taxicab.width/2, taxicab.height/2);
 }
 		void moveCar(){
-				carX = carX-5;
-				if(carX<=40 && bob.yPositionChar<= taxicab.carY){
-					window.location = "/lose";
+				carX = carX-carSpeed;
+				if(carX<=40 && carX >=0 && bob.yPositionChar>=carY){
+								window.location="/lose";
 				}
-
 		}
 }
-
+void generateCar(){
+		car = new Car(1300,490);
+		car.drawCar();
+		if (score==1000){
+			carSpeed++;
+			if (score==2000){
+			carSpeed++;
+				if (score==3000){
+					carSpeed++;
+					if (score==4000){
+						carSpeed++;
+}}}}
+}
 var bob;
 class Character{
 	var xPositionChar;
@@ -86,9 +98,12 @@ class Character{
 		if (keyPressed == true) {
 			yvelocity=-10;
 			currentPic = pic3;
+<<<<<<< HEAD
 			//Jump Sound FX
 
 
+=======
+>>>>>>> 010ea2a447ae962ee13fc7f29413d44b3a0726e8
   }
 	}
  }
@@ -121,7 +136,6 @@ class Character{
  	}
  	position = currentPos+width;
  }
-
 
 class Building {
   var xposition;
@@ -174,7 +188,7 @@ void updateScore(){
 	score++;
 }
 void checkForWin(){
-	if (score == 800){
+	if (score == 1500){
 		window.location = "/win";
 		console.log('win');
 	}
@@ -186,6 +200,7 @@ void setup(){
 	score = 0;
 	bob = new Character(40,550);
 	car1 = new Car(1300,490);
+	car = new Car(1300,490);
 //close setup
 }
 
@@ -210,6 +225,10 @@ void draw(){
 		layer3[i].drawBuilding();
 		layer3[i].moveBuilding();
 	}
+	if (score%100==0){
+		generateCar();
+	}
+	car.moveCar();
 	fill(168,168,168);
 	rect(1300, 615, -1300, 90);
 	bob.drawCharacter();
