@@ -6,32 +6,29 @@
 		/* @pjs preload="/static/runningfigure.png"; */
 		/* @pjs preload="/static/runningfigure2.png"; */
 		/* @pjs preload="/static/flyingfigure.png"; */
+		/* @pjs preload="/static/cab.png"; */
 
 class Car{
 	var carX;
 	var carY;
 	var carSpeed;
+	var taxicab;
 
 	Car(x, y){
 	  carX = x;
 		carY = y;
+		taxicab = loadImage("cab.png");
 	}
 	void drawCar(){
-		fill(255,255,0);
-		rect(carX, carY, 100, 64);
-		rect(carX+45, carY-45, 70, 55);
-		fill(0,0,0);
-		ellipse(carX+45, carY+60, 25,25);
-		ellipse(carX+75, carY+60, 25,25);
+		image(taxicab, carX, carX, taxicab.width/2, taxicab.height/2);
 }
 		void moveCar(){
 				carX = carX-3;
 				if(carX<40){
-					console.log("you lost!")
-						// if (bob.yPositionChar > ){
-						//
-						// }
-
+					window.location = "lose.html";
+						if (bob.yPositionChar > taxicab.carY){
+							window.location = "lose.html";
+						}
 				}
 			}
 }
