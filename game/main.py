@@ -2,15 +2,28 @@ import jinja2
 import os
 import webapp2
 
+template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_environment = jinja2.Environment(
-  loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))# this little bit sets jinja's relative directory to match the directory name(dirname) of the current __file__, in this case, helloworld.py
+  loader=jinja2.FileSystemLoader(template_dir))
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('OpeningScreen.html')
-        html = template.render()
-        self.response.write(html)
+        self.response.out.write(template.render())
+
+class GameHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('CityScrolling.html')
+        self.response.out.write(template.render())
+
+class WinHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('win.html')
+        self.response.out.write(template.render())
+
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ('/AdventureBob', GameHandler),
+    ('/win', WinHandler),
 ], debug=True)

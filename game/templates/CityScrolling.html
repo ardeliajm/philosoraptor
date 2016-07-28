@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>The Adventures Of Super Bob!</title>
-		<script src="processing-1.4.1.js"></script>
+		<script src="../static/processing-1.4.1.js"></script>
 		<script type="text/processing" data-processing-target="mycanvas">
 		/* @pjs preload="/static/runningfigure.png"; */
 		/* @pjs preload="/static/runningfigure2.png"; */
@@ -17,8 +17,12 @@ class Car{
 	Car(x, y){
 	  carX = x;
 		carY = y;
+<<<<<<< HEAD:game/static/CityScrolling.html
 		carSpeed=5;
 		taxicab = loadImage("cab.png");
+=======
+		taxicab = loadImage("../static/cab.png");
+>>>>>>> a10b07b046808917ac89ba5d600f6cd796eb241e:game/templates/CityScrolling.html
 	}
 	void drawCar(){
 		image(taxicab, carX, carY, taxicab.width/2, taxicab.height/2);
@@ -55,9 +59,9 @@ class Character{
 	Character(x, y){
 		xPositionChar = x;
 		yPositionChar = y;
-		pic1 = loadImage("runningfigure.png");
-		pic2 = loadImage("runningfigure2.png")
-		pic3 = loadImage("flyingfigure.png")
+		pic1 = loadImage("../static/runningfigure.png");
+		pic2 = loadImage("../static/runningfigure2.png")
+		pic3 = loadImage("../static/flyingfigure.png")
 
 		currentPic = pic1;
 		picChange = 0;
@@ -176,8 +180,9 @@ void updateScore(){
 	score++;
 }
 void checkForWin(){
-	if (score>= 8000){
- 		window.location = "win.html";
+	if (score == 800){
+		window.location = "/win";
+		console.log('win');
 	}
 }
 void setup(){
