@@ -24,13 +24,11 @@ class Car{
 }
 		void moveCar(){
 				carX = carX-3;
-				if(carX<40){
+				if(carX<40 && bob.yPositionChar < taxicab.carY){
 					window.location = "lose.html";
-				}	else if (bob.yPositionChar < taxicab.carY){
-							window.location = "lose.html";
-						}
 				}
-			}
+		}
+}
 
 var bob;
 class Character{
