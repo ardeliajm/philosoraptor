@@ -91,14 +91,14 @@ class Character{
  }
 
 var position = 0;
-var count = 1000;
+var count = 20;
 var keepingtrack = 0;
 void generateBuilding(){
 	var currentPos = position;
 	var width;
 	for (var i = 0; i < count; i++) {
 		width = random(120,150);
-		building1 = new Building(currentPos,random(150, 250),color(214,187,242),3,700,width);
+		building1 = new Building(currentPos,random(150, 300),color(214,187,242),3,700,width);
 		layer1.push(building1);
 		currentPos = currentPos + width;
 	}
@@ -117,6 +117,16 @@ void generateBuilding(){
 		layer3.push(building3);
 		currentPos = currentPos + width;
 	}
+
+	//Obstacles linked with Building3 (Front Row)
+	currentPos=position;
+  width;
+ 	for (var i = 0; i < count; i++){
+ 		width = random(60,90);
+ 		obstacles = new Building(currentPos,random(500,900),color(0,0,0),9,700,width);
+ 		layer4.push(obstacles);
+ 		currentPos = currentPos + width;
+ 	}
 	position = currentPos+width;
 
 }
@@ -164,14 +174,26 @@ void drawClouds(){
 		var building1;
     var building2;
     var building3;
+		var obstacles
     var layer1 = [];
     var layer2 = [];
     var layer3 = [];
+		var layer4 = [];
 		var score=0;
 
 void updateScore(){
 	score++;
 }
+
+// void win(){
+// 	if (score == 10000){}
+// }
+void setup(){
+  size(1250,700);
+  background(153,204,255);
+	generateBuilding()
+	bob = new Character(40,550)
+
 void checkForWin(){
 	if (score>= 8000){
  		window.location = "win.html";
@@ -193,7 +215,7 @@ void draw(){
 	background(153,204,255);
 	drawClouds();
 	keepingtrack++;
-	if (keepingtrack == count-1){
+	if (keepingtrack == 19){
 		generateBuilding();
 		keepingtrack = 0;
 	}
@@ -209,16 +231,25 @@ void draw(){
 		layer3[i].drawBuilding();
 		layer3[i].moveBuilding();
 	}
+	for(var i = 0; i < layer1.length; i++){
+		layer4[i].drawBuilding();
+		layer4[i].moveBuilding();
+	}
 	fill(168,168,168);
 	rect(1300, 615, -1300, 90);
 	bob.drawCharacter();
 	car1.drawCar();
 	car1.moveCar();
 	fill(255,255,255);
+
+	var score = 0;
+	score = score++;
+	text("score = "+score,10,20);
 	textSize(20);
 	updateScore();
 	checkForWin();
 	text("Score: "+score,10,20);
+
 }
 
 		</script>
