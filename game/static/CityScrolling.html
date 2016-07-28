@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Super Bob</title>
+		<title>The Adventures Of Super Bob!</title>
 		<script src="processing-1.4.1.js"></script>
 		<script type="text/processing" data-processing-target="mycanvas">
 		/* @pjs preload="/static/runningfigure.png"; */
@@ -23,10 +23,11 @@ class Car{
 		image(taxicab, carX, carY, taxicab.width/2, taxicab.height/2);
 }
 		void moveCar(){
-				carX = carX-3;
-				if(carX<40 && bob.yPositionChar < taxicab.carY){
+				carX = carX-5;
+				if(carX<=40 && bob.yPositionChar<= taxicab.carY){
 					window.location = "lose.html";
 				}
+
 		}
 }
 
@@ -64,7 +65,7 @@ class Character{
 			yPositionChar = ground;
 		}
 		if (yPositionChar < ceiling){
-			yPositionChar = ceiling-1;
+			yPositionChar = ceiling -1;
 		}
 
 		if (yPositionChar == ground){
@@ -84,40 +85,40 @@ class Character{
 		if (keyPressed == true) {
 			yvelocity=-10;
 			currentPic = pic3;
+
+
   }
 	}
  }
-
-var position = 0;
-var count = 1000;
-var keepingtrack = 0;
-void generateBuilding(){
-	var currentPos = position;
-	var width;
-	for (var i = 0; i < count; i++) {
-		width = random(120,150);
-		building1 = new Building(currentPos,random(150, 250),color(214,187,242),3,700,width);
-		layer1.push(building1);
-		currentPos = currentPos + width;
-	}
- currentPos=position;
-	for (var i = 0; i < count; i++) {
-		width = random(90,120);
-		building2 = new Building(currentPos,random(260, 350),color(143,107,181),7,700,width);
-		layer2.push(building2);
-		currentPos = currentPos + width;
-	}
- currentPos=position;
-	for (var i = 0; i < count; i++){
-		width = random(60,90);
-		//Buildings in Front Row
-		building3 = new Building(currentPos,random(50,500),color(91,47,138),9,700,width);
-		layer3.push(building3);
-		currentPos = currentPos + width;
-	}
-	position = currentPos+width;
-
-}
+ var position = 0;
+ var count = 1000;
+ var keepingtrack = 0;
+ void generateBuilding(){
+ 	var currentPos = position;
+ 	var width;
+ 	for (var i = 0; i < count; i++) {
+ 		width = random(40,60);
+ 		building1 = new Building(currentPos,random(50, 200),color(164,176,255),3,700,width);
+ 		layer1.push(building1);
+ 		currentPos = currentPos + width;
+ 	}
+  currentPos=position;
+ 	for (var i = 0; i < count; i++) {
+ 		width = random(90,120);
+ 		building2 = new Building(currentPos,random(200, 350),color(149,160,233),7,700,width);
+ 		layer2.push(building2);
+ 		currentPos = currentPos + width;
+ 	}
+  currentPos=position;
+ 	for (var i = 0; i < count; i++){
+ 		width = random(160,180);
+ 		//Buildings in Front Row
+ 		building3 = new Building(currentPos,random(90,600),color(85,97,176),9,700,width);
+ 		layer3.push(building3);
+ 		currentPos = currentPos + width;
+ 	}
+ 	position = currentPos+width;
+ }
 
 
 class Building {
@@ -177,7 +178,7 @@ void checkForWin(){
 }
 void setup(){
   size(1250,700);
-  background(153,204,255);
+  background(48,124,221);
 	generateBuilding();
 	score = 0;
 	bob = new Character(40,550);
@@ -187,7 +188,7 @@ void setup(){
 
 //function for drawing buildings, road, and everything else//loops 60 frames per sec
 void draw(){
-	background(122,175, 228);
+	background(48,124,221);
 	drawClouds();
 	keepingtrack++;
 	if (keepingtrack == count-1){
@@ -222,5 +223,7 @@ void draw(){
 	</head>
 	<body>
 		<canvas id="mycanvas"></canvas>
+<!-- <iframe width="1" height="1" src="https://www.youtube.com/embed/wneADJ9_Qy0?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe> -->
+<!-- <iframe width="1" height="1" src="https://www.youtube.com/embed/AtEfAcWPvps?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe> -->
 	</body>
 </html>
