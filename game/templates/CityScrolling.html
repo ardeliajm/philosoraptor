@@ -9,17 +9,22 @@
 		/* @pjs preload="/static/runningfigure2.png"; */
 		/* @pjs preload="/static/flyingfigure.png"; */
 		/* @pjs preload="/static/cab.png"; */
-var car;
+var car1;
+var car2;
+var car3;
+var car4;
+var car5;
 class Car{
 	var carX;
 	var carY;
-	var carSpeed;
 	var taxicab;
+	var carSpeed;
 
-	Car(x, y){
+
+	Car(x, y, cspd){
 	  carX = x;
 		carY = y;
-		carSpeed=5;
+		carSpeed=cspd;
 		taxicab = loadImage("../static/cab.png");
 	}
 	void drawCar(){
@@ -32,18 +37,20 @@ class Car{
 				}
 		}
 }
-void generateCar(){
-		car = new Car(1300,490);
-		car.drawCar();
-		if (score==1000){
-			carSpeed++;
-			if (score==2000){
-			carSpeed++;
-				if (score==3000){
-					carSpeed++;
-					if (score==4000){
-						carSpeed++;
-}}}}
+
+function generateCar(){
+	carSpeed = 6;
+			if (score>1000){
+				carSpeed+=2;
+				if (score>2000){
+				carSpeed+=6;
+					if (score>3000){
+						carSpeed+=10;
+						if (score>4000){
+							carSpeed+=12;
+	}}}}
+	return new Car(random(1300,3000),490,carSpeed);
+
 }
 var bob;
 class Character{
@@ -184,19 +191,24 @@ void updateScore(){
 	score++;
 }
 void checkForWin(){
-	if (score == 800){
+	if (score==8000){
 		window.location = "/win";
 		console.log('win');
 	}
 }
 void setup(){
-  size(1250,700);
+	size(1250,700);
+	fill(0,0,0);
   background(48,124,221);
 	generateBuilding();
+	car1 = generateCar();
+	car2 = generateCar();
+	car3 = generateCar();
+	car4 = generateCar();
+	car5 = generateCar();
 	score = 0;
 	bob = new Character(40,550);
-	car1 = new Car(1300,490);
-	car = new Car(1300,490);
+
 //close setup
 }
 
@@ -221,28 +233,50 @@ void draw(){
 		layer3[i].drawBuilding();
 		layer3[i].moveBuilding();
 	}
-	if (score%100==0){
-		generateCar();
-	}
-	car.moveCar();
+
 	fill(168,168,168);
 	rect(1300, 615, -1300, 90);
 	bob.drawCharacter();
 	car1.drawCar();
 	car1.moveCar();
+	car2.drawCar();
+	car2.moveCar();
+	car3.drawCar();
+	car3.moveCar();
+	car4.drawCar();
+	car4.moveCar();
+	car5.drawCar();
+	car5.moveCar();
 	fill(255,255,255);
 	textSize(40);
 	updateScore();
 	checkForWin();
 	text("Score: "+score,10,40);
-}
 
+	if (car1.carX<-200){
+	 	car1 = generateCar();
+	}
+	if (car2.carX<-200){
+		car2 = generateCar();
+	}
+	if (car3.carX<-200){
+		car3 = generateCar();
+	}
+	if (car4.carX<-200){
+		car4 = generateCar();
+	}
+	if (car5.carX<-200){
+		car5 = generateCar();
+	}
+}
 		</script>
 	</head>
-	<body>
+	<body style="background-color: black">
+
+		<h1> The Adventures of Super Bob!</p>
 		<canvas id="mycanvas"></canvas>
-		<iframe width="1" height="1" src="https://www.youtube.com/embed/p1jOnTlfMbM?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe>
-		<iframe width="1" height="1" src="https://www.youtube.com/embed/AtEfAcWPvps?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe>
+		<!-- <iframe width="1" height="1" src="https://www.youtube.com/embed/p1jOnTlfMbM?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe>
+		<iframe width="1" height="1" src="https://www.youtube.com/embed/AtEfAcWPvps?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe> -->
 			</body>
 	</body>
 </html>
