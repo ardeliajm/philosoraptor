@@ -21,9 +21,15 @@ class WinHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('win.html')
         self.response.out.write(template.render())
 
+class LoseHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('lose.html')
+        self.response.out.write(template.render())
+
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/AdventureBob', GameHandler),
     ('/win', WinHandler),
+    ('/lose', LoseHandler)
 ], debug=True)
