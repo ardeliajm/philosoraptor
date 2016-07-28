@@ -24,13 +24,10 @@ class Car{
 }
 		void moveCar(){
 				carX = carX-3;
-				if(carX<40){
+				if(carX<40 && bob.yPositionChar < taxicab.carY){
 					window.location = "lose.html";
-						if (bob.yPositionChar > taxicab.carY){
-							window.location = "lose.html";
-						}
 				}
-			}
+		}
 }
 
 var bob;
@@ -97,8 +94,13 @@ void generateBuilding(){
 	var currentPos = position;
 	var width;
 	for (var i = 0; i < count; i++) {
+<<<<<<< HEAD
 		width = random(40,60);
 		building1 = new Building(currentPos,random(50, 200),color(50,157,168),3,700,width);
+=======
+		width = random(120,150);
+		building1 = new Building(currentPos,random(150, 250),color(214,187,242),3,700,width);
+>>>>>>> 0ac5138317441aace5ac9885a2dd09acb9c886af
 		layer1.push(building1);
 		currentPos = currentPos + width;
 	}
@@ -184,7 +186,7 @@ void setup(){
 	generateBuilding();
 	score = 0;
 	bob = new Character(40,550);
-	car1 = new Car(1300,615);
+	car1 = new Car(1300,490);
 //close setup
 }
 
@@ -214,7 +216,11 @@ void draw(){
 	bob.drawCharacter();
 	car1.drawCar();
 	car1.moveCar();
+<<<<<<< HEAD
 	fill(198,198,198);
+=======
+	fill(255,255,255);
+>>>>>>> 0ac5138317441aace5ac9885a2dd09acb9c886af
 	textSize(20);
 	updateScore();
 	checkForWin();
