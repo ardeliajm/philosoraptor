@@ -13,7 +13,7 @@ var car1;
 var car2;
 var car3;
 var car4;
-var car5;
+//var car5;
 class Car{
 	var carX;
 	var carY;
@@ -45,11 +45,11 @@ function generateCar(){
 				if (score>2000){
 				carSpeed+=6;
 					if (score>3000){
-						carSpeed+=10;
+						carSpeed+=8;
 						if (score>4000){
 							carSpeed+=12;
 	}}}}
-	return new Car(random(1300,3000),490,carSpeed);
+	return new Car(random(1300,10000),490,carSpeed);
 
 }
 var bob;
@@ -88,7 +88,6 @@ class Character{
 		if (yPositionChar < ceiling){
 			yPositionChar = ceiling -1;
 		}
-
 		if (yPositionChar == ground){
 			if (currentPic == pic3){
 				currentPic = pic1;
@@ -106,7 +105,6 @@ class Character{
 		if (keyPressed == true) {
 			yvelocity=-10;
 			currentPic = pic3;
-
   }
 	}
  }
@@ -188,8 +186,10 @@ void drawClouds(){
 		var score=0;
 
 void updateScore(){
-	score++;
-}
+	if (bob.xPositionChar<=500){
+		score++;
+}}
+
 void checkForWin(){
 	if (score==8000){
 		window.location = "/win";
@@ -205,7 +205,7 @@ void setup(){
 	car2 = generateCar();
 	car3 = generateCar();
 	car4 = generateCar();
-	car5 = generateCar();
+	// car5 = generateCar();
 	score = 0;
 	bob = new Character(40,550);
 
@@ -245,29 +245,29 @@ void draw(){
 	car3.moveCar();
 	car4.drawCar();
 	car4.moveCar();
-	car5.drawCar();
-	car5.moveCar();
+	// car5.drawCar();
+	// car5.moveCar();
 	fill(255,255,255);
 	textSize(40);
-	updateScore();
+	score.updateScore();
 	checkForWin();
 	text("Score: "+score,10,40);
 
-	if (car1.carX<-200){
+	if (car1.carX<-600){
 	 	car1 = generateCar();
 	}
-	if (car2.carX<-200){
+	if (car2.carX<-600){
 		car2 = generateCar();
 	}
-	if (car3.carX<-200){
+	if (car3.carX<-600){
 		car3 = generateCar();
 	}
-	if (car4.carX<-200){
+	if (car4.carX<-600){
 		car4 = generateCar();
 	}
-	if (car5.carX<-200){
-		car5 = generateCar();
-	}
+	// if (car5.carX<-200){
+	// 	car5 = generateCar();
+	// }
 }
 		</script>
 	</head>
