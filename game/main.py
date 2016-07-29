@@ -19,7 +19,7 @@ class GameHandler(webapp2.RequestHandler):
 class WinHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('win.html')
-        self.response.out.write(template.render())
+        self.response.out.write(template.render({"score":self.request.get('score',0)}))
 
 class LoseHandler(webapp2.RequestHandler):
     def get(self):
