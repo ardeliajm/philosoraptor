@@ -6,3 +6,12 @@ h1 {
   text-shadow: 2px 2px darkgrey;
   font-size: 30px
 }
+p {
+  margin-top: 5px;
+  text-align: center;
+  color: white;
+  font-family: arial;
+  font-size: 10px;
+  text-shadow: none;
+
+}
