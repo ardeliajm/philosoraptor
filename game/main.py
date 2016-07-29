@@ -26,7 +26,6 @@ class LoseHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('lose.html')
         self.response.out.write(template.render())
 
-
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/AdventureBob', GameHandler),
