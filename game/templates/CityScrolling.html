@@ -33,7 +33,7 @@ class Car{
 		void moveCar(){
 				carX = carX-carSpeed;
 				if(carX<=40 && carX >=0 && bob.yPositionChar>=carY){
-								window.location="/lose";
+								window.location="/lose?score="+score;
 				}
 		}
 }
@@ -86,7 +86,7 @@ class Character{
 			yPositionChar = ground;
 		}
 		if (yPositionChar < ceiling){
-			yPositionChar = ceiling -1;
+			yPositionChar = ceiling-1;
 		}
 		if (yPositionChar == ground){
 			if (currentPic == pic3){
@@ -186,14 +186,15 @@ void drawClouds(){
 		var score=0;
 
 void updateScore(){
-	if (bob.xPositionChar<=500){
+	if (bob.yPositionChar>=515){
 		score++;
 }}
 
 void checkForWin(){
 	if (score==8000){
-		window.location = "/win";
+		window.location = "/win?score="+score;
 		console.log('win');
+
 	}
 }
 void setup(){
@@ -249,7 +250,7 @@ void draw(){
 	// car5.moveCar();
 	fill(255,255,255);
 	textSize(40);
-	score.updateScore();
+	updateScore();
 	checkForWin();
 	text("Score: "+score,10,40);
 
